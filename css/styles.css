@@ -551,10 +551,10 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #fff;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-.footer-subscribe-wrapper {
+.footer-subscribe-form {
   display: flex;
   gap: 24px;
 }
@@ -567,6 +567,11 @@ img {
   padding-left: 16px;
   padding-bottom: 8px;
   margin-right: 24px;
+
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #fff;
 
   background-color: transparent;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
@@ -581,15 +586,15 @@ img {
 
 .footer-subscribe-button {
   display: flex;
-  gap: 16px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   padding: 8px 24px;
-  width: 165px;
+  min-width: 165px;
   height: 40px;
-  background: #4d5ae5;
+  background-color: #4d5ae5;
   border: none;
+  cursor: pointer;
 
   font-weight: 500;
   line-height: 1.5;
@@ -600,6 +605,7 @@ img {
 
 .footer-subscribe-button-icon {
   fill: #fff;
+  margin-left: 16px;
 }
 
 .backdrop {
@@ -615,8 +621,10 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 250ms ease-in-out,
-    visibility 250ms ease-in-out;
+  transition: opacity 250ms
+      cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms
+      cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-open {
@@ -640,7 +648,11 @@ img {
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
   padding: 72px 24px 24px 24px;
+
+  transition: transform 250ms
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-window-close {
   position: absolute;
   top: 24px;
@@ -650,23 +662,31 @@ img {
   align-items: center;
   width: 24px;
   height: 24px;
-  border-radius: 100%;
+  padding: 0;
+  border-radius: 50%;
   background-color: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 250ms
-    cubic-bezier(0.4, 0, 0.2, 1);
+      cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-window-close-icon {
   fill: #2e2f42;
+  transition: fill 250ms
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-window-close:hover {
+.modal-window-close:hover,
+.modal-window-close:focus {
   background-color: #404bbf;
+  border: none;
 }
 
 .modal-window-close:hover
+  .modal-window-close-icon,
+.modal-window-close:focus
   .modal-window-close-icon {
   fill: #fff;
 }
@@ -691,7 +711,8 @@ img {
   height: 40px;
   padding-left: 38px;
   background-color: transparent;
-  transition: border 250ms
+  outline: transparent;
+  transition: border-color 250ms
     cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -699,9 +720,9 @@ img {
   border: 1px solid #4d5ae5;
 }
 
-.modal-form-input-label {
+.modal-form-label {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
   display: block;
@@ -728,14 +749,6 @@ img {
 .modal-field-textarea {
   margin-bottom: 16px;
 }
-.modal-textarea-label {
-  font-size: 12px;
-  line-height: 1.16667;
-  letter-spacing: 0.04em;
-  color: #8e8f99;
-  display: block;
-  margin-bottom: 4px;
-}
 
 .modal-textarea {
   border: 1px solid rgba(46, 47, 66, 0.4);
@@ -745,11 +758,24 @@ img {
   resize: none;
   padding: 8px 16px;
   background-color: transparent;
+  outline: transparent;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+
+  transition: border-color 250ms
+    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-textarea:focus {
+  border-color: #4d5ae5;
 }
 
 .modal-textarea::placeholder {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: rgba(46, 47, 66, 0.4);
 }
@@ -758,18 +784,9 @@ img {
   margin-bottom: 24px;
 }
 
-.modal-check:checked
-  + .modal-check-label
-  span {
-  border-radius: 2px;
-  background-color: #404bbf;
-  border: 1px solid #404bbf;
-  fill: #f4f4fd;
-}
-
 .modal-check-label {
   font-size: 12px;
-  line-height: 1.16667;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
   display: flex;
@@ -777,15 +794,29 @@ img {
   gap: 8px;
 }
 
-.modal-check-label span {
+.modal-check-label-icon {
   border-radius: 2px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   width: 16px;
   height: 16px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   fill: transparent;
+
+  transition: background-color 250ms
+      cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-check:checked
+  + .modal-check-label
+  .modal-check-label-icon {
+  border-radius: 2px;
+  background-color: #404bbf;
+  border: none;
+  fill: #f4f4fd;
 }
 
 .modal-check-label-link {
@@ -798,7 +829,7 @@ img {
 .modal-button {
   border-radius: 4px;
   padding: 16px 32px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background: #4d5ae5;
@@ -812,4 +843,7 @@ img {
   text-align: center;
   color: #fff;
   cursor: pointer;
+
+  transition: background-color 250ms
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
