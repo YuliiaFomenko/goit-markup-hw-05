@@ -789,7 +789,7 @@ img {
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 }
@@ -820,10 +820,13 @@ img {
 }
 
 .modal-check-label-link {
-  line-height: 1.33333;
+  line-height: 1.33;
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #4d5ae5;
+
+  font-size: 12px;
+  letter-spacing: 0.04em;
 }
 
 .modal-button {
